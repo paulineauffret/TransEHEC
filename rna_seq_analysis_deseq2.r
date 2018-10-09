@@ -26,7 +26,7 @@ library(readODS)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # 2. Set working directory and input files
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-working_dir="/home/pauline/Bureau/transEHEC" 						#set working directory
+working_dir="/home/pauline/Bureau/TransEHEC" 						#set working directory
 setwd(working_dir)
 counts<-read.table("TransEHEC_featureCounts_R.txt",row.names=1,head=T) ; head(counts) 	#count table coming from featureCounts
 info<-read.table("sampleSheet.txt",head=T,row.names=1,sep=";") ; head(info)		#sample sheet with sample informations
@@ -183,6 +183,8 @@ dev.off()
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # 8. Heatmap
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+nCounts_pf <- counts(dds_EDL, normalized=TRUE)
+
 #Rename dds_EDL locus tags with quickC gene names
 rownames(quickC)<-quickC[,1]
 temp<-c()
@@ -205,8 +207,10 @@ rownames(dds_EDL) <- temp
 nCounts <- counts(dds_EDL, normalized=TRUE)
 
 #Method_1
+par(mfrow=c(1,1))
 select <- nCounts[order(rowMeans(nCounts),decreasing=TRUE)[1:100],]
 heatmap(as.matrix(select), Rowv = NA, col = hmcol, mar = c(8,2))
+dev.off()
 
 #Method_2
 pdf("heatmap.pdf")
@@ -214,7 +218,7 @@ select <- order(rowMeans(nCounts),decreasing=TRUE)[1:75]
 nt <- normTransform(dds_EDL)
 log2.norm.counts <- assay(nt)[select,]
 df <- as.data.frame(colData(dds_EDL)[,c("Source","Time")])
-dist1 <- "euclidian"
+dist1 <- "euclidean"
 clust <- "average"
 pheatmap(log2.norm.counts, clustering_distance_cols = dist1, clustering_method = clust, cluster_rows=FALSE,cluster_cols=TRUE, annotation_col=df,show_rownames=TRUE,fontsize_row=5,fontsize_col=8,main=paste("Clustered heatmap of 75 most abundant genes\n",dist1," distance with ",clust, " clustering method",sep=""),fontsize=7)
 dev.off()
@@ -225,8 +229,7 @@ resOrdered1 <- res_EDL_1[order(res_EDL_1$padj),]
 topResults <- rbind(resOrdered1[ resOrdered1[,'log2FoldChange'] > 0, ][1:n,], resOrdered1[ resOrdered1[,'log2FoldChange'] < 0, ][n:1,] )
 topResults[c(1:5,(2*n-4):(2*n)), c('baseMean','log2FoldChange','padj')]
 hmcol <- brewer.pal(11,'RdBu')
-nCounts <- counts(dds_EDL, normalized=TRUE)
-heatmap(as.matrix(nCounts[ row.names(topResults), ]), Rowv = NA, col = hmcol, mar = c(8,2))
+heatmap(as.matrix(nCounts_pf[row.names(topResults), ]), Rowv = NA, col = hmcol, mar = c(8,2))
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
