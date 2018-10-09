@@ -1,0 +1,25 @@
+Sample_ID;Strain;Replicate;Source;Time;ST
+EDLARFE1;EDL933;1;Rectal Ampulla;End of Exponential Phase;RAEE
+EDLARFE2;EDL933;2;Rectal Ampulla;End of Exponential Phase;RAEE
+EDLARFE3;EDL933;3;Rectal Ampulla;End of Exponential Phase;RAEE
+EDLARME1;EDL933;1;Rectal Ampulla;Middle of Exponential Phase;RAEM
+EDLARME2;EDL933;2;Rectal Ampulla;Middle of Exponential Phase;RAEM
+EDLARME3;EDL933;3;Rectal Ampulla;Middle of Exponential Phase;RAEM
+EDLCIBFE1;EDL933;1;Intestine;End of Exponential Phase;BICEE
+EDLCIBFE2;EDL933;2;Intestine;End of Exponential Phase;BICEE
+EDLCIBFE3;EDL933;3;Intestine;End of Exponential Phase;BICEE
+EDLCIBME1;EDL933;1;Intestine;Middle of Exponential Phase;BICEM
+EDLCIBME2;EDL933;2;Intestine;Middle of Exponential Phase;BICEM
+EDLCIBME3;EDL933;3;Intestine;Middle of Exponential Phase;BICEM
+EDLCR6H1;EDL933;1;Rumen;End of Exponential Phase;RCEE
+EDLCR6H2;EDL933;2;Rumen;End of Exponential Phase;RCEE
+EDLCR6H3;EDL933;3;Rumen;End of Exponential Phase;RCEE
+EDLM9FE1;EDL933;1;M9;End of Exponential Phase;M9EE
+EDLM9FE2;EDL933;2;M9;End of Exponential Phase;M9EE
+EDLM9FE3;EDL933;3;M9;End of Exponential Phase;M9EE
+EDLM9ME1;EDL933;1;M9;Middle of Exponential Phase;M9EM
+EDLM9ME2;EDL933;2;M9;Middle of Exponential Phase;M9EM
+EDLM9ME3;EDL933;3;M9;Middle of Exponential Phase;M9EM
+MC2ARFE1;MC2;1;Rectal Ampulla;End of Exponential Phase;RAEE
+MC2ARFE2;MC2;2;Rectal Ampulla;End of Exponential Phase;RAEE
+MC2ARFE3;MC2;3;Rectal Ampulla;End of Exponential Phase;RAEE
