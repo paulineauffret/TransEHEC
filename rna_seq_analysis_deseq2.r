@@ -30,7 +30,7 @@ working_dir="~/transEHEC" 						#set working directory
 setwd(working_dir)
 counts<-read.table("TransEHEC_featureCounts_R.txt",row.names=1,head=T) ; head(counts) 	#count table coming from featureCounts
 info<-read.table("sampleSheet.txt",head=T,row.names=1,sep=";") ; head(info)		#sample sheet with sample informations
-rnagenes<-read.table("RNAgenes.txt",head=T) ; head(rnagenes)				#list of EDL933 RNA genes
+rnagenes<-read.table("RNAgenes.txt",head=T) ; head(rnagenes)				#list of EDL933 rRNA genes
 quickC<-read.table("quick_correspondence_281216.txt",h=T,sep=";") ; dim(quickC)		#gene names
 annot <- read.csv("Annotations_trimmed_281216.txt", h=T, sep=";") ; head(annot)		#gene annotations
 
