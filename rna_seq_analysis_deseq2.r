@@ -26,7 +26,11 @@ library(readODS)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # 2. Set working directory and input files
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+<<<<<<< HEAD
 working_dir="/home/pauline/Bureau/TransEHEC" 						#set working directory
+=======
+working_dir="~/transEHEC" 						#set working directory
+>>>>>>> 43bfabe0a6aa3158b62794f55b5affbde36d5c45
 setwd(working_dir)
 counts<-read.table("TransEHEC_featureCounts_R.txt",row.names=1,head=T) ; head(counts) 	#count table coming from featureCounts
 info<-read.table("sampleSheet.txt",head=T,row.names=1,sep=";") ; head(info)		#sample sheet with sample informations
